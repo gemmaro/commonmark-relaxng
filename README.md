@@ -19,6 +19,20 @@ java -jar trang-20241231/trang-20241231/trang.jar \
 
 [jing-trang]: https://github.com/relaxng/jing-trang/releases/tag/V20241231
 
+## Test
+
+Generate CommonMark XML file as:
+
+``` shell
+perl \
+    -MCommonMark \
+    -e 'my$s=do{local$/;<STDIN>};print CommonMark->parse_document($s)->render_xml' \
+    < /path/to/spec.txt \
+    > /tmp/spec.xml
+```
+
+Then use Emacs nXML mode for instance.
+
 ## References
 
 About [XML Schema namespace usage][xsd-namespace].
