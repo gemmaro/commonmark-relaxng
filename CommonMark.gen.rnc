@@ -1,0 +1,101 @@
+# DTD for CommonMark xml export format
+
+default namespace = "http://commonmark.org/xml/1.0"
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+
+block =
+  block_quote
+  | \list
+  | code_block
+  | paragraph
+  | heading
+  | thematic_break
+  | html_block
+  | custom_block
+inline =
+  \text
+  | softbreak
+  | linebreak
+  | code
+  | emph
+  | strong
+  | link
+  | image
+  | html_inline
+  | custom_inline
+document = element document { attlist.document, block* }
+attlist.document &= empty
+# block elements
+block_quote = element block_quote { attlist.block_quote, block* }
+attlist.block_quote &= empty
+\list = element list { attlist.list, item+ }
+attlist.list &=
+  attribute type { "bullet" | "ordered" },
+  attribute start { text }?,
+  attribute tight { "true" | "false" },
+  attribute delimiter { "period" | "paren" }?
+item = element item { attlist.item, block* }
+attlist.item &= empty
+code_block = element code_block { attlist.code_block, text }
+attlist.code_block &=
+  [ a:defaultValue = "preserve" ]
+  attribute xml:space { string "preserve" }?,
+  attribute info { text }?
+paragraph = element paragraph { attlist.paragraph, inline* }
+attlist.paragraph &= empty
+heading = element heading { attlist.heading, inline* }
+attlist.heading &= attribute level { "1" | "2" | "3" | "4" | "5" | "6" }
+thematic_break =
+  element thematic_break { attlist.thematic_break, empty }
+attlist.thematic_break &= empty
+html_block = element html_block { attlist.html_block, text }
+attlist.html_block &=
+  [ a:defaultValue = "preserve" ]
+  attribute xml:space { string "preserve" }?
+custom_block =
+  element custom_block {
+    attlist.custom_block, (inline | block | item)*
+  }
+attlist.custom_block &=
+  attribute on_enter { text }?,
+  attribute on_exit { text }?
+# inline elements
+\text = element text { attlist.text, text }
+attlist.text &= empty
+softbreak = element softbreak { attlist.softbreak, empty }
+attlist.softbreak &= empty
+linebreak = element linebreak { attlist.linebreak, empty }
+attlist.linebreak &= empty
+code = element code { attlist.code, text }
+attlist.code &=
+  [ a:defaultValue = "preserve" ]
+  attribute xml:space { string "preserve" }?
+emph = element emph { attlist.emph, inline* }
+attlist.emph &= empty
+strong = element strong { attlist.strong, inline* }
+attlist.strong &= empty
+link = element link { attlist.link, inline* }
+attlist.link &=
+  attribute destination { text },
+  attribute title { text }?
+image = element image { attlist.image, inline* }
+attlist.image &=
+  attribute destination { text },
+  attribute title { text }?
+html_inline = element html_inline { attlist.html_inline, text }
+attlist.html_inline &=
+  [ a:defaultValue = "preserve" ]
+  attribute xml:space { string "preserve" }?
+custom_inline = element custom_inline { attlist.custom_inline, inline* }
+attlist.custom_inline &=
+  attribute on_enter { text }?,
+  attribute on_exit { text }?
+# All elements can have a sourcepos attribute.
+# The format is SL:SC-EL:EC
+# where SL = number of starting line (first line = 1)
+#       EL = number of ending line
+#       SC = number of starting column (first column = 1)
+#       EC = number of ending column
+attlist.ANY &= attribute sourcepos { text }?
+ANY |= notAllowed
+start = document
