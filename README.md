@@ -15,6 +15,12 @@ java -jar trang-20241231/trang-20241231/trang.jar \
 
 [jing-trang]: https://github.com/relaxng/jing-trang/releases/tag/V20241231
 
+## References
+
+About [XML Schema namespace usage][xsd-namespace].
+
+[xsd-namespace]: https://www.w3.org/TR/xmlschema-2/#:~:text=XMLSchema-,To,datatypes,-This
+
 ## License
 
 The RELAX NG file `CommonMark.rnc` is distributed under the [Creative
