@@ -9,3 +9,6 @@
 ## 0.1.0 - 2026-02-16
 
 Initial release.
+
+Note that `CommonMark.rnc` utilize the XML Schema Datatypes feature
+for the `sourcepos` attribute value.
