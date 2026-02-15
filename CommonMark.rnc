@@ -37,7 +37,9 @@ attlist.list &=
   attribute type { "bullet" | "ordered" },
   attribute start { text }?,
   attribute tight { "true" | "false" },
-  attribute delimiter { "period" | "paren" }?
+  attribute delim { attribute_value.delimiter }?,
+  attribute delimiter { attribute_value.delimiter }?
+attribute_value.delimiter = "period" | "paren"
 
 item = element item { attlist.item, block* }
 attlist.item &= empty

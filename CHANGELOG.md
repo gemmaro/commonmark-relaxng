@@ -3,6 +3,7 @@
 ## Unreleased
 
 * Allow `xml:space` attribute in `text` element.
+* Allow `delim` attribute in `list` element.
 * Renamed from `attlist.ANY` to `attlist.common`.
 * Removed unused `ANY` definition.
 
