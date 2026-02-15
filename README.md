@@ -1,5 +1,9 @@
 # RELAX NG schema for CommonMark
 
+The schema is located at `CommonMark.rnc`.
+
+## Generation
+
 Generate RELAX NG compact syntax schema:
 
 Download Trang from [jing-trang][jing-trang] release page.
