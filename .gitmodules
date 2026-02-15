@@ -1,0 +1,3 @@
+[submodule "vendor/commonmark-spec"]
+	path = vendor/commonmark-spec
+	url = https://github.com/commonmark/commonmark-spec
