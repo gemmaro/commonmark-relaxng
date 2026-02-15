@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.1.1 - 2026-02-16
+
 * Allow `xml:space` attribute in `text` element.
 * Allow `delim` attribute in `list` element.
 * Renamed from `attlist.ANY` to `attlist.common`.
