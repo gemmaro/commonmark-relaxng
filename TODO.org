@@ -1,0 +1,1 @@
+* TODO Use rng and patch with XSLT so that updating when original DTD is much easier
