@@ -21,7 +21,9 @@ java -jar trang-20241231/trang-20241231/trang.jar \
 
 ## Test
 
-Generate CommonMark XML file as:
+Option 1: Run `./check` script.
+
+Option 2: Generate CommonMark XML file as:
 
 ``` shell
 perl \

@@ -1,0 +1,22 @@
+#!/bin/sh
+set -eu
+: "${SCHEMA:=CommonMark.rnc}"
+spec_dir=$HOME/src/CommonMark/CommonMark-spec
+guix shell cmark \
+     -- cmark \
+     -t xml \
+     "$spec_dir/spec.txt" \
+     > spec.xml
+guix shell openjdk \
+     -- java \
+     -jar trang-20241231/trang-20241231/trang.jar \
+     -I rnc \
+     -O rng \
+     "$SCHEMA" \
+     CommonMark.rng
+cp "$spec_dir/CommonMark.dtd" .
+guix shell openjdk \
+     -- java \
+     -jar jing-20241231/jing-20241231/bin/jing.jar \
+     CommonMark.rng \
+     spec.xml 
