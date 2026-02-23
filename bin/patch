@@ -4,7 +4,7 @@ tmp=$(mktemp)
 guix shell libxslt \
      -- xsltproc \
      --output "$tmp" \
-     patch.xsl \
+     libexec/patch.xsl \
      CommonMark.gen.rng
 guix shell libxml2 \
      -- xmllint \
