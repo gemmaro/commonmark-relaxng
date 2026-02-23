@@ -6,7 +6,7 @@ The schema is located at `CommonMark.rnc`.
 
 Generate RELAX NG compact syntax schema:
 
-Download Trang from [jing-trang][jing-trang] release page.
+Download Trang from [jing-trang][jing-trang] release page (with `download` script).
 
 ``` shell
 guix shell openjdk

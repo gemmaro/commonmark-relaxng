@@ -1,0 +1,6 @@
+#!/bin/sh
+set -eu
+wget https://github.com/relaxng/jing-trang/releases/download/V20241231/jing-20241231.zip
+wget https://github.com/relaxng/jing-trang/releases/download/V20241231/trang-20241231.zip
+unzip jing-20241231.zip
+unzip trang-20241231.zip
