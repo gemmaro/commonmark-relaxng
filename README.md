@@ -1,6 +1,7 @@
 # RELAX NG schema for CommonMark
 
-The schema is located at `CommonMark.rnc`.
+You can get the compiled schema at Actions artifacts or release page.
+Filenames: `CommonMark.rnc` and `CommonMark.rng`.
 
 ## Generation
 
