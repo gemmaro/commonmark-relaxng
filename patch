@@ -1,0 +1,13 @@
+#!/bin/sh
+set -eu
+tmp=$(mktemp)
+guix shell libxslt \
+     -- xsltproc \
+     --output "$tmp" \
+     patch.xsl \
+     CommonMark.gen.rng
+guix shell libxml2 \
+     -- xmllint \
+     --output CommonMark.rng \
+     --format \
+     "$tmp"

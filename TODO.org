@@ -1,1 +1,2 @@
-* TODO Use rng and patch with XSLT so that updating when original DTD is much easier
+* DONE Use rng and patch with XSLT so that updating when original DTD is much easier
+CLOSED: [2026-02-23 Mon 18:53]
