@@ -8,6 +8,10 @@ Generate RELAX NG compact syntax schema:
 
 Download Trang from [jing-trang][jing-trang] release page (with `download` script).
 
+Option 1: Run `./generate` script.
+
+Option 2: Run below.
+
 ``` shell
 guix shell openjdk
 java -jar trang-20241231/trang-20241231/trang.jar \
