@@ -61,7 +61,9 @@ attlist.custom_block &=
   attribute on_exit { text }?
 # inline elements
 \text = element text { attlist.text, text }
-attlist.text &= empty
+attlist.text &=
+  [ a:defaultValue = "preserve" ]
+  attribute xml:space { string "preserve" }?
 softbreak = element softbreak { attlist.softbreak, empty }
 attlist.softbreak &= empty
 linebreak = element linebreak { attlist.linebreak, empty }
