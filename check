@@ -7,13 +7,13 @@ guix shell cmark \
      -t xml \
      "$spec_dir/spec.txt" \
      > spec.xml
-guix shell openjdk \
-     -- java \
-     -jar trang-20241231/trang.jar \
-     -I rnc \
-     -O rng \
-     "$SCHEMA" \
-     CommonMark.rng
+# guix shell openjdk \
+#      -- java \
+#      -jar trang-20241231/trang.jar \
+#      -I rnc \
+#      -O rng \
+#      "$SCHEMA" \
+#      CommonMark.rng
 cp "$spec_dir/CommonMark.dtd" .
 guix shell openjdk \
      -- java \
