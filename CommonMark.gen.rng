@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- DTD for CommonMark xml export format -->
+<grammar ns="http://commonmark.org/xml/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="">
+  <define name="block">
+    <choice>
+      <ref name="block_quote"/>
+      <ref name="list"/>
+      <ref name="code_block"/>
+      <ref name="paragraph"/>
+      <ref name="heading"/>
+      <ref name="thematic_break"/>
+      <ref name="html_block"/>
+      <ref name="custom_block"/>
+    </choice>
+  </define>
+  <define name="inline">
+    <choice>
+      <ref name="text"/>
+      <ref name="softbreak"/>
+      <ref name="linebreak"/>
+      <ref name="code"/>
+      <ref name="emph"/>
+      <ref name="strong"/>
+      <ref name="link"/>
+      <ref name="image"/>
+      <ref name="html_inline"/>
+      <ref name="custom_inline"/>
+    </choice>
+  </define>
+  <define name="document">
+    <element name="document">
+      <ref name="attlist.document"/>
+      <zeroOrMore>
+        <ref name="block"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.document" combine="interleave">
+    <empty/>
+  </define>
+  <!-- block elements -->
+  <define name="block_quote">
+    <element name="block_quote">
+      <ref name="attlist.block_quote"/>
+      <zeroOrMore>
+        <ref name="block"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.block_quote" combine="interleave">
+    <empty/>
+  </define>
+  <define name="list">
+    <element name="list">
+      <ref name="attlist.list"/>
+      <oneOrMore>
+        <ref name="item"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.list" combine="interleave">
+    <attribute name="type">
+      <choice>
+        <value>bullet</value>
+        <value>ordered</value>
+      </choice>
+    </attribute>
+    <optional>
+      <attribute name="start"/>
+    </optional>
+    <attribute name="tight">
+      <choice>
+        <value>true</value>
+        <value>false</value>
+      </choice>
+    </attribute>
+    <optional>
+      <attribute name="delimiter">
+        <choice>
+          <value>period</value>
+          <value>paren</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="item">
+    <element name="item">
+      <ref name="attlist.item"/>
+      <zeroOrMore>
+        <ref name="block"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.item" combine="interleave">
+    <empty/>
+  </define>
+  <define name="code_block">
+    <element name="code_block">
+      <ref name="attlist.code_block"/>
+      <text/>
+    </element>
+  </define>
+  <define name="attlist.code_block" combine="interleave">
+    <optional>
+      <attribute name="xml:space" a:defaultValue="preserve">
+        <value type="string">preserve</value>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="info"/>
+    </optional>
+  </define>
+  <define name="paragraph">
+    <element name="paragraph">
+      <ref name="attlist.paragraph"/>
+      <zeroOrMore>
+        <ref name="inline"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.paragraph" combine="interleave">
+    <empty/>
+  </define>
+  <define name="heading">
+    <element name="heading">
+      <ref name="attlist.heading"/>
+      <zeroOrMore>
+        <ref name="inline"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.heading" combine="interleave">
+    <attribute name="level">
+      <choice>
+        <value>1</value>
+        <value>2</value>
+        <value>3</value>
+        <value>4</value>
+        <value>5</value>
+        <value>6</value>
+      </choice>
+    </attribute>
+  </define>
+  <define name="thematic_break">
+    <element name="thematic_break">
+      <ref name="attlist.thematic_break"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="attlist.thematic_break" combine="interleave">
+    <empty/>
+  </define>
+  <define name="html_block">
+    <element name="html_block">
+      <ref name="attlist.html_block"/>
+      <text/>
+    </element>
+  </define>
+  <define name="attlist.html_block" combine="interleave">
+    <optional>
+      <attribute name="xml:space" a:defaultValue="preserve">
+        <value type="string">preserve</value>
+      </attribute>
+    </optional>
+  </define>
+  <define name="custom_block">
+    <element name="custom_block">
+      <ref name="attlist.custom_block"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="inline"/>
+          <ref name="block"/>
+          <ref name="item"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.custom_block" combine="interleave">
+    <optional>
+      <attribute name="on_enter"/>
+    </optional>
+    <optional>
+      <attribute name="on_exit"/>
+    </optional>
+  </define>
+  <!-- inline elements -->
+  <define name="text">
+    <element name="text">
+      <ref name="attlist.text"/>
+      <text/>
+    </element>
+  </define>
+  <define name="attlist.text" combine="interleave">
+    <optional>
+      <attribute name="xml:space" a:defaultValue="preserve">
+        <value type="string">preserve</value>
+      </attribute>
+    </optional>
+  </define>
+  <define name="softbreak">
+    <element name="softbreak">
+      <ref name="attlist.softbreak"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="attlist.softbreak" combine="interleave">
+    <empty/>
+  </define>
+  <define name="linebreak">
+    <element name="linebreak">
+      <ref name="attlist.linebreak"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="attlist.linebreak" combine="interleave">
+    <empty/>
+  </define>
+  <define name="code">
+    <element name="code">
+      <ref name="attlist.code"/>
+      <text/>
+    </element>
+  </define>
+  <define name="attlist.code" combine="interleave">
+    <optional>
+      <attribute name="xml:space" a:defaultValue="preserve">
+        <value type="string">preserve</value>
+      </attribute>
+    </optional>
+  </define>
+  <define name="emph">
+    <element name="emph">
+      <ref name="attlist.emph"/>
+      <zeroOrMore>
+        <ref name="inline"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.emph" combine="interleave">
+    <empty/>
+  </define>
+  <define name="strong">
+    <element name="strong">
+      <ref name="attlist.strong"/>
+      <zeroOrMore>
+        <ref name="inline"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.strong" combine="interleave">
+    <empty/>
+  </define>
+  <define name="link">
+    <element name="link">
+      <ref name="attlist.link"/>
+      <zeroOrMore>
+        <ref name="inline"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.link" combine="interleave">
+    <attribute name="destination"/>
+    <optional>
+      <attribute name="title"/>
+    </optional>
+  </define>
+  <define name="image">
+    <element name="image">
+      <ref name="attlist.image"/>
+      <zeroOrMore>
+        <ref name="inline"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.image" combine="interleave">
+    <attribute name="destination"/>
+    <optional>
+      <attribute name="title"/>
+    </optional>
+  </define>
+  <define name="html_inline">
+    <element name="html_inline">
+      <ref name="attlist.html_inline"/>
+      <text/>
+    </element>
+  </define>
+  <define name="attlist.html_inline" combine="interleave">
+    <optional>
+      <attribute name="xml:space" a:defaultValue="preserve">
+        <value type="string">preserve</value>
+      </attribute>
+    </optional>
+  </define>
+  <define name="custom_inline">
+    <element name="custom_inline">
+      <ref name="attlist.custom_inline"/>
+      <zeroOrMore>
+        <ref name="inline"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.custom_inline" combine="interleave">
+    <optional>
+      <attribute name="on_enter"/>
+    </optional>
+    <optional>
+      <attribute name="on_exit"/>
+    </optional>
+  </define>
+  <!--
+    All elements can have a sourcepos attribute.
+    The format is SL:SC-EL:EC
+    where SL = number of starting line (first line = 1)
+          EL = number of ending line
+          SC = number of starting column (first column = 1)
+          EC = number of ending column
+  -->
+  <define name="attlist.ANY" combine="interleave">
+    <optional>
+      <attribute name="sourcepos"/>
+    </optional>
+  </define>
+  <define name="ANY" combine="choice">
+    <notAllowed/>
+  </define>
+  <start>
+    <choice>
+      <ref name="document"/>
+    </choice>
+  </start>
+</grammar>
