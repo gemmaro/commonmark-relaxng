@@ -5,3 +5,5 @@
 /spec.xml
 /CommonMark.dtd
 /CommonMark.rng
+/CommonMark.gen.rnc
+/CommonMark.rnc
