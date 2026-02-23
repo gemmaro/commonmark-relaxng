@@ -4,7 +4,8 @@ set -eu
 spec_dir=$HOME/src/CommonMark/CommonMark-spec
 guix shell cmark \
      -- cmark \
-     -t xml \
+     --to xml \
+     --sourcepos \
      "$spec_dir/spec.txt" \
      > spec.xml
 # guix shell openjdk \
