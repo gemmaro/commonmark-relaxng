@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## 0.1.2 - 2026-02-23
+
+* Update generated schema, while hand-tweaked schema is not changed.
+* Add some utility scripts.
+
 ## 0.1.1 - 2026-02-16
 
 * Allow `xml:space` attribute in `text` element.
