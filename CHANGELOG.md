@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## 0.2.0 - 2026-02-23
+
+* Schema files are now acquired at Actions artifacts or release page.
+  You can also generate one from source.
+* Fix `sourcepos` attribute specification.  We didn't actually fix
+  this at 0.1.1 version...
+
 ## 0.1.2 - 2026-02-23
 
 * Update generated schema, while hand-tweaked schema is not changed.
