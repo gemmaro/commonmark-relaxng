@@ -41,9 +41,13 @@ Then use Emacs nXML mode for instance.
 
 ## References
 
-About [XML Schema namespace usage][xsd-namespace].
+About [XML Schema namespace usage][xsd-namespace].  Also [XSL
+Transformations (XSLT) Version 1.0][xslt], [XMLパス言語 (XPath)
+Version 1.0][xpath].
 
 [xsd-namespace]: https://www.w3.org/TR/xmlschema-2/#:~:text=XMLSchema-,To,datatypes,-This
+[xslt]: https://www.w3.org/TR/xslt-10/
+[xpath]: http://www.doraneko.org/xml/xpath10/19991116/Overview.html
 
 ## License
 
