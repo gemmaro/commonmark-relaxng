@@ -1,0 +1,33 @@
+name: Generate schemas
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y trang libxml2-utils xsltproc
+
+    - name: Generate compact schema files
+      run: |
+        ./bin/patch
+        ./bin/generate-compact
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: schema-files
+        path: |
+          CommonMark.rnc
+          CommonMark.rng
+          CHANGELOG.md
+          README.md
