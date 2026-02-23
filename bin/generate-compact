@@ -1,7 +1,6 @@
 #!/bin/sh
 set -eu
-guix shell openjdk \
-     -- java \
+java \
      -jar trang-20241231/trang.jar \
      -I rng \
      -O rnc \
