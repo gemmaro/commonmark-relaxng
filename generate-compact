@@ -1,0 +1,9 @@
+#!/bin/sh
+set -eu
+guix shell openjdk \
+     -- java \
+     -jar trang-20241231/trang.jar \
+     -I rng \
+     -O rnc \
+     CommonMark.rng \
+     CommonMark.rnc
