@@ -1,7 +1,7 @@
 #!/bin/sh
-set -eu
-java \
-     -jar trang-20241231/trang.jar \
+set -eux
+: "${TRANG:=trang}"
+$TRANG \
      -I rng \
      -O rnc \
      CommonMark.rng \
