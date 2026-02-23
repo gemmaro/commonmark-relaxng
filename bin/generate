@@ -5,5 +5,5 @@ guix shell openjdk \
      -jar trang-20241231/trang.jar \
      -I dtd \
      -O rng \
-     "$HOME/src/CommonMark/CommonMark-spec/CommonMark.dtd" \
+     vendor/commonmark-spec/CommonMark.dtd \
      CommonMark.gen.rng
